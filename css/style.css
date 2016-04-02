@@ -23,8 +23,14 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
+
+
 body {
-	line-height: 1;
+	background: #252c31;
+	color: #ffffff;
+	font-family: 'Futura Std';
+	font-weight: normal;
+	line-height: normal;
 }
 ol, ul {
 	list-style: none;
@@ -40,4 +46,116 @@ q:before, q:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
+}
+
+
+
+/* Grid */
+.grid__item {
+	height: calc(100% - 220px);
+	min-height: 220px;
+	max-width: calc(100% - 40px);
+	padding: 30px 0;
+	z-index: 1;
+	position: relative;
+	text-align: center;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-align-items: center;
+	align-items: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-transform: translate3d(0,0,0); /* Solves Safari bug because of SVG clipping mask */
+}
+@media screen and (max-width: 50em) {
+	.grid__item {
+		width: 100%;
+	}
+}
+.link {
+	outline: none;
+	text-decoration: none;
+	position: relative;
+	display: inline-block;
+}
+/* Takiri */
+.link--takiri {
+	font-family: 'Futura Std';
+	font-weight: bold;
+	font-size: 6.000em;
+	text-transform: uppercase;
+	padding: 0 10px 20px;
+	-webkit-transition: color 0.5s;
+	transition: color 0.5s;
+	color: #646d72;
+}
+
+.link--takiri:hover {
+	color: #fff;
+}
+
+.link--takiri::before {
+	content: '';
+	position: absolute;
+	height: 48px;
+	width: 120%;
+	top: 50%;
+	margin-top: -18px;
+	left: -10%;
+	z-index: -1;
+	background: #2e3439;
+	-webkit-transform: rotate3d(0,0,1,45deg) scale3d(0,1,1);
+	transform: rotate3d(0,0,1,45deg) scale3d(0,1,1);
+	-webkit-transition: -webkit-transform 0.5s;
+	transition: transform 0.5s;
+}
+
+.link--takiri:hover::before {
+	-webkit-transform: rotate3d(0,0,1,45deg) scale3d(1,1,1);
+	transform: rotate3d(0,0,1,45deg) scale3d(1,1,1);
+}
+
+.link--takiri span.title {
+	font-size: 25%;
+	font-family: 'Garamond Premiere Pro';
+	font-weight: bold;
+	font-style: italic;
+	text-transform: capitalize;
+	position: absolute;
+	right: 15px;
+	color: #f1eb01;
+	bottom: 0;
+	opacity: 0;
+	-webkit-transform: translate3d(-10px,-10px,0);
+	transform: translate3d(-10px,-10px,0);
+	-webkit-transition: -webkit-transform 0.5s, opacity 0.5s;
+	transition: transform 0.5s, opacity 0.5s;
+}
+.link--takiri:hover span.title {
+	opacity: 1;
+	-webkit-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+}
+.link--takiri span.im {
+	font-size: 30%;
+	font-family: 'Futura Std';
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 0.3em;
+	font-weight: 900;
+	position: absolute;
+	text-align: center;
+	width: 100%;
+	color: #646d72;
+	top: 0;
+	opacity: 0;
+	-webkit-transform: translate3d(-10px,10px,0);
+	transform: translate3d(-10px,10px,0);
+	-webkit-transition: -webkit-transform 0.5s, opacity 0.5s;
+	transition: transform 0.5s, opacity 0.5s;
+}
+.link--takiri:hover span.im {
+	opacity: 1;
+	-webkit-transform: translate3d(0,-25px,0);
+	transform: translate3d(0,-25px,0);
 }
